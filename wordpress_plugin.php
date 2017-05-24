@@ -18,6 +18,8 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+include_once('settings.php');
+
 class grid_plugin {
 	public $dir;
 	public $url;
@@ -309,7 +311,7 @@ class grid_plugin {
 		 * enqueue the css array
 		 */
 		foreach ( $css as $idx => $file ) {
-			wp_enqueue_style( 'grid_css_lib_'.$idx,plugins_url( 'lib/'.$file, __FILE__ ) );
+			wp_enqueue_style( 'grid_css_lib_'.$idx,GRID_URL.$file );
 		}
 		wp_enqueue_style( 'grid_wordpress_css', plugins_url( 'grid-wordpress.css', __FILE__ ) );
 		wp_enqueue_style( 'grid_wordpress_container_slots_css', add_query_arg( array( 'noheader' => true, 'page' => 'grid_wp_container_slots_css' ), admin_url( 'admin.php' ) ) );
@@ -328,7 +330,7 @@ class grid_plugin {
 		 * enqueue the js array
 		 */
 		foreach ( $js as $idx => $file ) {
-			wp_enqueue_script( 'grid_js_lib_'.$idx, plugins_url( 'lib/'.$file, __FILE__ ) );
+			wp_enqueue_script( 'grid_js_lib_'.$idx, GRID_URL.$file );
 		}
 		wp_enqueue_script( 'grid_wordpress_js', plugins_url( 'grid-wordpress.js', __FILE__ ) );
 
@@ -399,7 +401,7 @@ class grid_plugin {
 /**
  * init grid library for global use
  */
-require( dirname(__FILE__).'/lib/grid.php' );
+require( GRID_PATH.'grid.php' );
 global $grid_lib;
 $grid_lib = new grid_library();
 
