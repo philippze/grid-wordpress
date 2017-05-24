@@ -1,5 +1,5 @@
 {
-    "name": "philippze/grid",
+    "name": "philippze/wp-grid",
     "type": "wordpress-plugin",
     "require": {
         "composer/installers": "^1.0"
